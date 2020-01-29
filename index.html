@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  </head>
+  <body>
+    <div class="globalContainer">
+      <div class="container-textarea-input">
+        <p class="textarea-description">Входные данные</p>
+        <textarea name="input" id="city-id" rows=17 cols=35>"Nashville, TN", 36.17, -86.78;
+"New York, NY", 40.71, -74.00;
+"Atlanta, GA", 33.75, -84.39;
+"Denver, CO", 39.74, -104.98;
+"Seattle, WA", 47.61, -122.33;
+"Los Angeles, CA", 34.05, -118.24;
+"Memphis, TN", 35.15, -90.05</textarea>
+        <input class="btn btn2" type="submit" value="Добавить" id="send" onclick="getCity(); createFinalObject(CityMap); update(data)">
+      </div>
+      <div class="container-textarea-output">
+        <p class="textarea-description">Выходные данные</p>
+        <textarea name="output" id="output-area" rows=17 cols=35></textarea>
+        <div>
+          <input class="btn btn2" type="submit" value="Очистить" id="send" onclick="document.getElementById('output-area').value = ''">
+          <input class="btn btn2" type="submit" value="Список городов" id="allCities" onclick="CityMap.listOfCities()">
+        </div>
+      </div>
+      <div class="container-usercoordinate">
+        <div class="textbox">
+          <input type="text" class="userCoordinates coord" id="userLatitude" placeholder="Широта" name="" value="">
+          <input type="text" class="userCoordinates coord" id="userLongitude" placeholder="Долгота" name="" value="">
+          <input class="btn" type="button" name="" value="Определить" onclick="CityMap.closestCity()">
+        </div>
+        <div class="textbox2">
+          <input type="text" class="userCoordinates" id="userState" placeholder="Введите название штата" name="" value="">
+          <input class="btn btn2" type="button" name="" value="Отправить" onclick="CityMap.searchByState()">
+          <input class="btn btn2" type="button" name="" value="Список штатов" onclick="CityMap.list()">  
+        </div>
+        <div class="textbox3">
+          <input class="btn" type="button" name="" value="Самый северный" onclick="CityMap.northernmost()">
+          <input class="btn btn2" type="button" name="" value="Самый южный" onclick="CityMap.southernmost()">
+          <input class="btn btn2" type="button" name="" value="Самый западный" onclick="CityMap.westernmost()">
+          <input class="btn btn2" type="button" name="" value="Самый восточный" onclick="CityMap.easternmost()">
+        </div>
+      </div>
+      <svg width="350" height="350"></svg>
+    </div>
+  <script type="text/JavaScript" src="app.js"></script>
+  <script type="text/JavaScript" src="pie.js"></script>
+  </body>
+</html>
